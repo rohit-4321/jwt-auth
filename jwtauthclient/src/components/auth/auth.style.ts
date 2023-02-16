@@ -1,4 +1,4 @@
-import { Button, styled, TextField } from '@mui/material';
+import { Button, styled, TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 
 export const AuthPage = styled('div')`
@@ -19,6 +19,7 @@ export const AuthButton = styled(Button)`
 border-radius: 8px;
 background-color: white;
 color: black;
+font-weight: 900;
 &:hover {
   background-color: #D8D8D8;
 }
@@ -29,7 +30,7 @@ color: green;
 
 `;
 export const StyledAuthTextField = styled(TextField)`
-background-color: #414141;
+background-color: #212121;
 border-radius: 8px;
 width: auto;
 & .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
@@ -41,4 +42,13 @@ width: auto;
   padding-top: 12px;
   padding-bottom: 12px;
 }
+& input {
+  color: white;
+}
+`;
+
+export const StyledBottomLinkAuth = styled(Typography)`
+color: blue;
+margin: auto auto 10px auto;
+cursor: pointer;
 `;

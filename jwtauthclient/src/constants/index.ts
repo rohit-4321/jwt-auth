@@ -1,4 +1,4 @@
-import { ILoginCredentials } from '../components/signUp/auth.interface';
+import { ILoginCredentials } from '../containers/LogIn/login.interface';
 
 export const initalAuthCredentials: ILoginCredentials = {
   email: '',

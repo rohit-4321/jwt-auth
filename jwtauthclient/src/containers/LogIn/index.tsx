@@ -1,11 +1,11 @@
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { initalAuthCredentials } from '../../constants';
-import { AuthButton, AuthPage, ForgotPasswordStyled, StyledAuthTextField } from './auth.style';
-import { AuthContainer } from './authContainer';
-import { useAuthCredentials } from './useAuthCredentials';
+import { useCustomState } from '../../hooks/useCustomState';
+import { AuthButton, AuthPage, ForgotPasswordStyled, StyledAuthTextField, StyledBottomLinkAuth } from '../../components/auth/auth.style';
+import { AuthContainer } from '../../components/auth';
 
-export const SignUp = () => {
-  const [logInData, setLoginData] = useAuthCredentials(initalAuthCredentials);
+export const LogIn = () => {
+  const [logInData, setLoginData] = useCustomState(initalAuthCredentials);
   return <AuthPage>
     <AuthContainer>
       <Stack
@@ -17,6 +17,9 @@ export const SignUp = () => {
         direction='column'
         gap={2}
       >
+        <Typography variant="h3" component="h3" sx={{ color: 'white' }}>
+           LOG IN
+        </Typography>
         <StyledAuthTextField
           defaultValue={logInData.email}
           placeholder="Email"
@@ -43,9 +46,17 @@ export const SignUp = () => {
         <AuthButton sx={{ marginTop: '13px' }} variant="contained">
           Login
         </AuthButton>
+        <StyledBottomLinkAuth
+          onClick={
+            () => {
+              console.log('Clicked');
+            }
+          }>
+           Log In
+        </StyledBottomLinkAuth>
       </Stack>
     </AuthContainer>
   </AuthPage>;
 };
 
-export default SignUp;
+export default LogIn;
