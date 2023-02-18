@@ -3,8 +3,10 @@ import { initalAuthCredentials } from '../../constants';
 import { useCustomState } from '../../hooks/useCustomState';
 import { AuthButton, AuthPage, ForgotPasswordStyled, StyledAuthTextField, StyledBottomLinkAuth } from '../../components/auth/auth.style';
 import { AuthContainer } from '../../components/auth';
+import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 
-export const LogIn = () => {
+export const LogIn: FC = () => {
   const [logInData, setLoginData] = useCustomState(initalAuthCredentials);
   return <AuthPage>
     <AuthContainer>
@@ -52,7 +54,7 @@ export const LogIn = () => {
               console.log('Clicked');
             }
           }>
-           Log In
+          <Link to='/signup'>Sign Up</Link>
         </StyledBottomLinkAuth>
       </Stack>
     </AuthContainer>

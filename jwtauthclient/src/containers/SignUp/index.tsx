@@ -4,10 +4,13 @@ import { initalAuthCredentials } from '../../constants';
 import { useCustomState } from '../../hooks/useCustomState';
 import { AuthButton, AuthPage, StyledAuthTextField, StyledBottomLinkAuth } from '../../components/auth/auth.style';
 import { AuthContainer } from '../../components/auth';
+import { Link } from 'react-router-dom';
+import { verifyEmail } from '../../helpers';
 
 export const SignUp = () => {
   const [logInData, setLoginData] = useCustomState(initalAuthCredentials);
   const [confirmPass, setConfirmPass] = useState(initalAuthCredentials.password);
+  console.log(verifyEmail('rohirewsdf@gmail.com'));
   return <AuthPage>
     <AuthContainer>
       <Stack
@@ -62,7 +65,7 @@ export const SignUp = () => {
               console.log('Clicked');
             }
           }>
-           Sign Up
+          <Link to="/">Log In</Link>
         </StyledBottomLinkAuth>
       </Stack>
     </AuthContainer>
