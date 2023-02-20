@@ -1,12 +1,13 @@
-import LogIn from './containers/LogIn';
-import { SignUp } from './containers/SignUp';
+import { BrowserRouter } from 'react-router-dom';
+import Router from './containers/routes';
 
 function App () {
   return (
-    <div className="App">
-      <LogIn />
-      {/* <SignUp /> */}
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Router />
+      </div>
+    </BrowserRouter>
   );
 }
 
