@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Stack, Typography } from '@mui/material';
 import { initalAuthCredentials } from '../../constants';
-import { useCustomState } from '../../hooks/useCustomState';
 import { AuthButton, AuthPage, StyledAuthTextField, StyledBottomLinkAuth } from '../../components/auth/auth.style';
 import { AuthContainer } from '../../components/auth';
 import { Link } from 'react-router-dom';
 import { atom } from 'jotai';
 import { useAtom, useAtomValue } from 'jotai/react';
 import api from '../../api';
+import { EmailTextField } from '../../components/auth/EmailTextField';
+import { PassWordTextField } from '../../components/auth/PassWordTextField';
 
 const emailAtom = atom<string>(initalAuthCredentials.email);
 const passWordAtom = atom<string>(initalAuthCredentials.password);
@@ -23,30 +24,6 @@ const updateSignUpCredAtom = atom(null, (get, set, action: { email: string, pass
   set(confirmPasswordAtom, action.confirmPassword);
 });
 
-const EmailTextField = () => {
-  const [email, setEmail] = useAtom(emailAtom);
-  return <StyledAuthTextField
-    defaultValue={email}
-    placeholder="Email"
-    onChange={
-      (e) => {
-        setEmail(e.target.value);
-      }
-    }
-  />;
-};
-const PassWordTextField = () => {
-  const [password, setPassword] = useAtom(passWordAtom);
-  return <StyledAuthTextField
-    defaultValue={password}
-    placeholder="Password"
-    onChange={
-      (e) => {
-        setPassword(e.target.value);
-      }
-    }
-  />;
-};
 const ConfirmPassWordTextField = () => {
   const [password, setPassword] = useAtom(confirmPasswordAtom);
   return <StyledAuthTextField
@@ -103,9 +80,9 @@ export const SignUp = () => {
            SIGN UP
         </Typography>
 
-        <EmailTextField />
+        <EmailTextField emailAtom={emailAtom} />
 
-        <PassWordTextField />
+        <PassWordTextField passWordAtom={passWordAtom} />
 
         <ConfirmPassWordTextField />
 
