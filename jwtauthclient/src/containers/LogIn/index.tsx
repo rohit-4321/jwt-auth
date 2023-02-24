@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { atom } from 'jotai';
 import { useAtom, useAtomValue } from 'jotai/react';
 import { verifyEmail, verifyPassword } from '../../helpers';
+import { PassWordTextField } from '../../components/auth/PassWordTextField';
+import { EmailTextField } from '../../components/auth/EmailTextField';
 
 const emailAtom = atom<string>(initalAuthCredentials.email);
 const passWordAtom = atom<string>(initalAuthCredentials.password);
@@ -19,30 +21,6 @@ const updateLogInCredAtom = atom(null, (get, set, action: { email: string, passw
   set(passWordAtom, action.password);
 });
 
-const EmailTextField = () => {
-  const [email, setEmail] = useAtom(emailAtom);
-  return <StyledAuthTextField
-    defaultValue={email}
-    placeholder="Email"
-    onChange={
-      (e) => {
-        setEmail(e.target.value);
-      }
-    }
-  />;
-};
-const PassWordTextField = () => {
-  const [password, setPassword] = useAtom(passWordAtom);
-  return <StyledAuthTextField
-    defaultValue={password}
-    placeholder="Password"
-    onChange={
-      (e) => {
-        setPassword(e.target.value);
-      }
-    }
-  />;
-};
 const LogInButton = () => {
   const logInCred = useAtomValue(logInCredentialAtom);
   const handleClick = () => {
@@ -84,9 +62,9 @@ export const LogIn: FC = () => {
            LOG IN
         </Typography>
 
-        <EmailTextField />
+        <EmailTextField emailAtom={emailAtom} />
 
-        <PassWordTextField />
+        <PassWordTextField passWordAtom={passWordAtom} />
 
         <ForgotPasswordStyled>Forgot password?</ForgotPasswordStyled>
 
