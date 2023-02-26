@@ -1,6 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import { initalAuthCredentials } from '../../constants';
-import { AuthButton, AuthPage, ForgotPasswordStyled, StyledAuthTextField, StyledBottomLinkAuth } from '../../components/auth/auth.style';
+import { AuthButton, AuthPage, ForgotPasswordStyled, StyledBottomLinkAuth } from '../../components/auth/auth.style';
 import { AuthContainer } from '../../components/auth';
 import React, { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';

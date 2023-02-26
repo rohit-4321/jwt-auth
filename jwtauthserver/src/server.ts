@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv';
 import * as cors from 'cors';
 import * as mongoose from 'mongoose';
 import { CORS_OPTIONS } from './config';
+import router from "./routes";
 
 dotenv.config()
 
@@ -11,6 +12,9 @@ const app = express();
 app.use(cors(CORS_OPTIONS));
 
 app.use(express.json());
+
+app.use('/', router);
+
 
 mongoose.set('strictQuery', true);
 
